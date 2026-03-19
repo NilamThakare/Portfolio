@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nilam Thakare | Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+    }
+    
+    body{
+    background:linear-gradient(to right,#0f0c29,#302b63,#24243e);
+    color:#fff;
+    cursor:none; /* custom cursor */
+    }
+    
+    section{
+    padding:80px 10%;
+    }
+
+    /* ================= CUSTOM CURSOR ================= */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #8f94fb;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 9999;
+    }
+
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: #8f94fb;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+    
+    /* ================= NAVBAR ================= */
+    .navbar{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 10%;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    }
+    
+    .nav-left{
+    font-size:22px;
+    font-weight:700;
+    }
+    
+    .navbar a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:500;
+    position:relative;
+    }
+
+    /* Navbar hover effect */
+    .navbar a::after{
+      content:"";
+      position:absolute;
+      width:0%;
+      height:2px;
+      left:0;
+      bottom:-5px;
+      background:#8f94fb;
+      transition:0.3s;
+    }
+
+    .navbar a:hover::after{
+      width:100%;
+    }
+    
+    .navbar a.active{
+    color:#8f94fb;
+    }
+    
+    /* ================= HERO ================= */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 10%;
+      flex-wrap: wrap;
+    }
+    
+    .hero h1 {
+      font-size: 60px;
+      background: linear-gradient(90deg, #ffffff, #6366f1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero p {
+      margin: 20px 0;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+    
+    .hero-buttons {
+      margin-top: 20px;
+    }
+    
+    .btn {
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+    
+    .primary {
+      background: #6366f1;
+      color: white;
+    }
+    
+    .secondary {
+      border: 2px solid #6366f1;
+      color: #6366f1;
+    }
+    
+    .hero-img img {
+      width: 300px;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(99,102,241,0.5);
+    }
+    
+    /* Buttons */
+    .hero-buttons{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    }
+    
+    .btn{
+    padding:15px 30px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:18px;
+    transition:0.3s ease;
+    display:inline-block;
+    }
+    
+    .primary{
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    color:#fff;
+    box-shadow:0 10px 25px rgba(99,102,241,0.4);
+    }
+    
+    .primary:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 15px 35px rgba(99,102,241,0.6);
+    }
+    
+    .secondary{
+    border:2px solid #6366f1;
+    color:#818cf8;
+    }
+    
+    .secondary:hover{
+    background:#6366f1;
+    color:#fff;
+    transform:translateY(-5px) scale(1.05);
+    }
+    
+    /* ================= ABOUT ================= */
+    .about-content{
+    display:flex;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+    margin-top:40px;
+    }
+    
+    .profile-img{
+    width:280px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .about-text{
+    flex:1;
+    }
+    
+    /* ================= CARDS ================= */
+    .project-card,
+    .education-card,
+    .contact-box{
+    background:rgba(255,255,255,0.05);
+    padding:30px;
+    border-radius:15px;
+    margin-top:20px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+    }
+    
+    .project-card:hover,
+    .education-card:hover{
+    transform:translateY(-8px);
+    border-color:#8f94fb;
+    }
+
+    /* ================= SKILLS HOVER ================= */
+    .skills-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:20px;
+    }
+    
+    .skills-list span{
+    background:rgba(255,255,255,0.08);
+    padding:12px 25px;
+    border-radius:10px;
+    transition:0.3s;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    }
+
+    .skills-list span:hover{
+    transform:translateY(-5px) scale(1.05);
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    color:#fff;
+    box-shadow:0 10px 25px rgba(99,102,241,0.6);
+    }
+
+    .skills-list span::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+    transition:0.5s;
+    }
+
+    .skills-list span:hover::before{
+    left:100%;
+    }
+    
+    /* ================= EDUCATION ================= */
+    .education-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:40px;
+    }
+    
+    /* ================= CONTACT ================= */
+    .contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:40px;
+    }
+    
+    .contact form input,
+    .contact form textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    background:#111;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+    }
+    
+    .btn{
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    background:linear-gradient(90deg,#667eea,#764ba2);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    }
+    
+    .contact-info div{
+    margin-bottom:15px;
+    }
+    
+    /* ================= FOOTER ================= */
+    footer{
+    text-align:center;
+    padding:20px;
+    background:#000;
+    margin-top:40px;
+    }
+    
+    @media(max-width:768px){
+    .contact{
+    grid-template-columns:1fr;
+    }
+    .about-content{
+    flex-direction:column;
+    }
+    .hero h1{
+    font-size:40px;
+    }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<nav class="navbar">
+  <div class="nav-left">NT</div>
+  <div class="nav-right">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#education" class="nav-link">Education</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>NILAM THAKARE</h1>
+    <h2>Web Developer</h2>
+
+    <p>
+      I create beautiful, functional web applications with modern
+      technologies and clean code. Passionate about solving complex
+      problems through elegant solutions and building scalable systems.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn primary">✈ Get In Touch</a>
+      <a href="#projects" class="btn secondary">💼 View Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-content">
+      <img src="C:\Users\Saurabh vaidya\Downloads\WhatsApp Image 2026-02-14 at 2.25.09 PM.jpeg" class="profile-img">
+      <div class="about-text">
+        <p>Hello! I am Nilam Thakare, passionate about web development.</p>
+        <p>I build web apps using Python, Flask, MySQL, HTML & CSS.</p>
+      </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <h3>Collaboration Web App</h3>
+    <p>Flask-based web app with authentication and chat system.</p>
+  </div>
+
+  <div class="project-card">
+    <h3>Portfolio Website</h3>
+    <p>Responsive portfolio built using HTML and CSS.</p>
+  </div>
+
+  <div class="project-card">
+    <h3>Library Seat Management System</h3>
+    <p>
+      A web-based system developed using Flask and MySQL to manage library seating efficiently.
+      
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="project-card">
+  <p>Web Development Intern (Fresher)</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+<h2>Education</h2>
+
+<div class="education-container">
+<div class="education-card">
+<h3>BCA</h3>
+<p>Sant Gadge Baba Amravati University</p>
+<p>2023 – 2026</p>
+</div>
+
+<div class="education-card">
+<h3>HSC</h3>
+<p>Adarsh Junior College</p>
+<p>2020 – 2022</p>
+</div>
+
+<div class="education-card">
+<h3>SSC</h3>
+<p>Ratnabai Rathi Highschool</p>
+<p>2019 - 2020</p>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-list">
+    <span>Python</span>
+    <span>Flask</span>
+    <span>MySQL</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>Bootstrap</span>
+    <span>Git & GitHub</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Get In Touch</h2>
+
+<div class="contact">
+<form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button class="btn">Send Message</button>
+</form>
+
+<div class="contact-info">
+<div><strong>Email:</strong> thakarenilam80@gmail.com</div>
+<div><strong>Phone:</strong> +91 9373208413</div>
+<div><strong>Location:</strong> Amravati, Maharashtra</div>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Nilam Thakare | All Rights Reserved
+</footer>
+
+<script>
+const cursor = document.querySelector(".cursor");
+const dot = document.querySelector(".cursor-dot");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.top = e.clientY + "px";
+  cursor.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+  dot.style.left = e.clientX + "px";
+});
+</script>
+
+</body>
+</html>
